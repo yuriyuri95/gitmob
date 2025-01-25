@@ -1,8 +1,8 @@
 import { useState } from "react";
-
+import { Link } from "react-router";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const navItems = ["HOME", "STORE", "ABOUT", "CONTACT", "NEWS", "FAQ"];
+  const navItems = ["HOME", "ABOUT"];
 
   return (
     <nav className="bg-gray-800 text-white p-4">
@@ -19,7 +19,9 @@ function NavBar() {
       >
         {navItems.map((navItem) => (
           <li className="hover:text-gray-300" key={navItem}>
-            {navItem}
+            <Link to={navItem === "HOME" ? "/" : `/${navItem.toLowerCase()}`}>
+              {navItem}
+            </Link>
           </li>
         ))}
       </ul>
