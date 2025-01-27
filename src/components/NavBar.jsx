@@ -13,13 +13,19 @@ function NavBar() {
         </button>
       </div>
       <ul
-        className={`md:flex md:justify-between md:w-1/2 md:mx-auto ${
-          isOpen ? "block" : "hidden"
+        className={`md:flex md:place-content-end md:w-1/2 md:mx-auto ${
+          isOpen ? "block z-10 absolute" : "hidden"
         } md:block`}
       >
         {navItems.map((navItem) => (
-          <li className="hover:text-gray-300" key={navItem}>
-            <Link to={navItem === "HOME" ? "/" : `/${navItem.toLowerCase()}`}>
+          <li
+            className="hover:text-gray-300 md:px-4 bg-gray-800 w-screen p-4"
+            key={navItem}
+          >
+            <Link
+              to={navItem === "HOME" ? "/" : `/${navItem.toLowerCase()}`}
+              onClick={() => setIsOpen(false)}
+            >
               {navItem}
             </Link>
           </li>
